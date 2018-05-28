@@ -2,7 +2,7 @@
 
 silabas = open("silabas.txt", "w")
 
-for consoante in 'bcdfghjklmnpqrstwxyz':
+for consoante in 'bcdfghjklmnpqrstvwxyz': # silabas normais
     for vogal in 'aeiou':
         sil = consoante+vogal
         silabas.write(sil)
@@ -10,13 +10,25 @@ for consoante in 'bcdfghjklmnpqrstwxyz':
 
 
 d = ["ch", "lh", "rr", "ss", "sc", "gu", "qu", "nh","sh"]
-for digrafo in d:
+for digrafo in d: #digrafos como cha, lha, gua
     for vogal in "aeiou":
         a = digrafo+vogal
         silabas.write(a)
         silabas.write(" ")
 
-letras = "lrsxmnaeiou"  # letras que podem ficar soltas
+for letra in "bdfgjkptv": #bra bre dra e similares
+    for vogal in "aeiou":
+        a = letra + 'r' + vogal
+        silabas.write(a)
+        silabas.write(" ")
+
+for letra in "dklmnrstxz": #silabas com al, el, ak, at, ax
+    for vogal in "aeiou":
+        a = vogal + letra
+        silabas.write(a)
+        silabas.write(" ")
+
+letras = "lrsxmnaeiouy"  # letras que podem ficar soltas
 for letra in letras:
      silabas.write(letra)
      silabas.write(" ")
