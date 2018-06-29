@@ -1,0 +1,1 @@
+Alguns códigos que fiz na disciplina Algoritmos e Estruturas de Dados 1. A maioria está bagunçada e alguns têm gambiarra.
