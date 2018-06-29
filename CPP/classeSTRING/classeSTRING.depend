@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1530231442 source:c:\users\glomy\desktop\comp\cpp\classestring\classestring.cpp
+	<iostream>
+	<iomanip>
+	<cstring>
+	"classeSTRING.hpp"
+
+1530232780 source:c:\users\glomy\desktop\comp\cpp\classestring\main.cpp
+	<iostream>
+	"classeSTRING.hpp"
+
+1530231381 c:\users\glomy\desktop\comp\cpp\classestring\classestring.hpp
+
