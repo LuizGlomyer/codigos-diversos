@@ -1,0 +1,56 @@
+# depslib dependency file v1.0
+1534344109 source:c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\elemento.cpp
+	"ELEMENTO.hpp"
+
+1534649657 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\elemento.hpp
+
+1534556119 source:c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\fila.cpp
+	<iostream>
+	"Fila.hpp"
+	"ELEMENTO.hpp"
+
+1534716353 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\fila.hpp
+	"ELEMENTO.hpp"
+
+1534812386 source:c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\main.cpp
+	<iostream>
+	"Fila.hpp"
+	"Pilha.hpp"
+	"ListaLigada.hpp"
+	"ListaDupla.hpp"
+	"TabelaHash.hpp"
+	"Arvore.hpp"
+	"aleatorio.hpp"
+
+1534556119 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\fila.cpp
+	<iostream>
+	"Fila.hpp"
+	"ELEMENTO.hpp"
+
+1534716145 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\pilha.hpp
+	"ELEMENTO.hpp"
+
+1534648858 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\listaligada.h
+	"ELEMENTO.hpp"
+
+1534722931 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\listaligada.hpp
+	"ELEMENTO.hpp"
+
+1534716520 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\listadupla.hpp
+	"ELEMENTO.hpp"
+
+1534722910 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\tabelahash.hpp
+	"ELEMENTO.hpp"
+	"ListaLigada.hpp"
+
+1534810927 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\aleatorio.hpp
+	<ctime>
+	<cstdlib>
+	<cctype>
+	<cmath>
+
+1534812462 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\arvore.hpp
+	"No.hpp"
+
+1534812263 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\no.hpp
+
