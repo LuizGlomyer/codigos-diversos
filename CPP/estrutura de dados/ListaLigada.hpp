@@ -2,13 +2,16 @@
 #define LISTALIGADA_HPP_INCLUDED
 
 #include "ELEMENTO.hpp"
+#include <iostream>
+using namespace std;
+
 
 template<typename T>
 class ListaLigada{
 public:
     ListaLigada();
     ~ListaLigada();
-    void adicionar(T);
+    void inserir(T);
     void remover(int = 0);
     void esvaziar();
     void mostrarLista() const;
@@ -30,7 +33,7 @@ ListaLigada<T>::~ListaLigada(){
 }
 
 template<typename T>
-void ListaLigada<T>::adicionar(T dado){
+void ListaLigada<T>::inserir(T dado){
     if(inicio == nullptr){
         inicio = new ELEMENTO<T>;
         inicio->dados = dado;
@@ -84,6 +87,8 @@ void ListaLigada<T>::esvaziar(){
         e = e->prox;
         delete excluir;
     }
+    inicio = nullptr;
+    tamanho = -1;
 }
 
 template<typename T>
