@@ -33,6 +33,8 @@
 		</Compiler>
 		<Unit filename="ELEMENTO.hpp" />
 		<Unit filename="Fila.hpp" />
+		<Unit filename="Grafo.cpp" />
+		<Unit filename="Grafo.hpp" />
 		<Unit filename="ListaDupla.hpp" />
 		<Unit filename="ListaLigada.hpp" />
 		<Unit filename="No.hpp" />
