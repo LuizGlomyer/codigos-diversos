@@ -1,0 +1,71 @@
+# depslib dependency file v1.0
+1533931796 source:c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\bubblesort.cpp
+	"troca.cpp"
+
+1535739727 source:c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\main.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	<cstdlib>
+	<ctime>
+	<vector>
+	"bubblesort.hpp"
+	"selectionsort.hpp"
+	"insertionsort.hpp"
+	"quicksort.hpp"
+	"mergesort.hpp"
+	"heapsort.hpp"
+	"shellsort.hpp"
+	"countingsort.hpp"
+	"combsort.hpp"
+	"bogosort.hpp"
+
+1533931796 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\bubblesort.cpp
+	"troca.cpp"
+
+1534087287 source:c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\selectionsort.cpp
+	"troca.cpp"
+
+1533931870 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\troca.cpp
+
+1534087287 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\selectionsort.cpp
+	"troca.cpp"
+
+1533931870 source:c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\troca.cpp
+
+1534089279 source:c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\insertionsort.cpp
+	"troca.cpp"
+
+1534089279 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\insertionsort.cpp
+	"troca.cpp"
+
+1534303213 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\bubblesort.hpp
+	"troca.hpp"
+
+1534441023 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\selectionsort.hpp
+	"troca.hpp"
+
+1533931870 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\troca.hpp
+
+1534440997 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\insertionsort.hpp
+	"troca.hpp"
+
+1534884338 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\quicksort.hpp
+	<iostream>
+	<algorithm>
+	"troca.hpp"
+
+1534441854 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\mergesort.hpp
+
+1535484819 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\shellsort.hpp
+
+1534440150 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\combsort.hpp
+
+1534477480 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\bogosort.hpp
+	<algorithm>
+	<vector>
+
+1534909277 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\heapsort.hpp
+
+1535751042 c:\users\glomy\desktop\comp\cpp\aed2\ordenacao\countingsort.hpp
+
