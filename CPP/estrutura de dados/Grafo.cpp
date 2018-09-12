@@ -12,16 +12,33 @@ Grafo_LA::~Grafo_LA(){
 }
 
 void Grafo_LA::inicializar(int numVertices){
-    if(n != 0)
-        destruir();
+
     adj = new ListaLigada<Vertice>[numVertices+1];
     n = numVertices;
     m = 0;
 }
 
+void Grafo_LA::destruir(){
+    for(int i = 0; i <= n; i++)
+        adj[i].esvaziar();
+    delete [] adj;
+    n = m = 0;
+}
+
+void Grafo_LA::reinicializar(int numVertices){
+    destruir();
+    inicializar(numVertices);
+}
+
+
 void Grafo_LA::inserirAresta(Vertice u, Vertice v){
     adj[u].inserir(v);
     adj[v].inserir(u);
+    m++;
+}
+
+void Grafo_LA::inserirArestaDirecionada(Vertice u, Vertice v){
+    adj[u].inserir(v);
     m++;
 }
 
@@ -36,16 +53,12 @@ void Grafo_LA::mostrar(){
     }
 }
 
-void Grafo_LA::destruir(){
-    for(int i = 0; i <= n; i++)
-        adj[i].esvaziar();
-    delete [] adj;
-    n = m = 0;
+int Grafo_LA::getTamanho(){
+    return n;
 }
 
-void Grafo_LA::reinicializar(int numVertices){
-    destruir();
-    inicializar(numVertices);
+ListaLigada<Vertice>* Grafo_LA::getAdj(){
+    return adj;
 }
 
 
@@ -114,4 +127,140 @@ void Grafo_MA::mostrar(){
             cout << mat[i][j] << '\t';
         cout << '\n';
     }
+}
+
+int Grafo_MA::getTamanho(){
+    return n;
+}
+
+int** Grafo_MA::getMatriz(){
+    return mat;
+}
+
+
+
+
+
+
+
+
+BuscaEmProfundidade::BuscaEmProfundidade(){
+    cor = nullptr;
+    predecessorVertice = tempoEntrada = tempoSaida = nullptr;
+}
+
+BuscaEmProfundidade::~BuscaEmProfundidade(){
+    if(cor != nullptr)
+        delete [] cor;
+    if(predecessorVertice != nullptr)
+        delete [] predecessorVertice;
+    if(tempoEntrada != nullptr)
+        delete [] tempoEntrada;
+    if(tempoSaida != nullptr)
+        delete [] tempoSaida;
+}
+
+
+void BuscaEmProfundidade::DFS(Grafo_LA& G){
+    tempo = 0;
+    cor = new Cor[G.getTamanho()+1];
+    predecessorVertice = new int [G.getTamanho()+1];
+    tempoEntrada = new int [G.getTamanho()+1];
+    tempoSaida = new int [G.getTamanho()+1];
+
+    for(Vertice u = 1; u <= G.getTamanho(); u++){
+        cor[u] = Branco;
+        predecessorVertice[u] = -1;
+    }
+    for(Vertice u = 1; u <= G.getTamanho(); u++)
+        if(cor[u] == Branco)
+            DFS_VISITA(G, u);
+}
+
+void BuscaEmProfundidade::DFS_VISITA(Grafo_LA& G, int u){
+    cout << "Vertice: " << u << '\n';
+    tempo++;
+    tempoEntrada[u] = tempo;
+    cor[u] = Cinza;
+    int* adjacenciaVertice = G.getAdj()[u].retornaInteiros(); //retorna inteiros nos dá uma vetor com os inteiros referentes aos vertices adjacentes a u
+
+    /*for(int i = 1; i < adjacenciaVertice[0]; i++)
+        cout << adjacenciaVertice[i] << '\n';
+    cout << '\n';
+    printa as adjacencias */
+
+    for(Vertice v = 1; v < adjacenciaVertice[0]; v++){ //a posicao 0 apenas indica quantos elementos existem no vetor. Que engenhoso
+        if(cor[adjacenciaVertice[v]] == Branco){
+            predecessorVertice[adjacenciaVertice[v]] = u;
+            DFS_VISITA(G, adjacenciaVertice[v]);
+        }
+    }
+
+    cor[u] = Preto;
+    tempo++;
+    tempoSaida[u] = tempo;
+    ordemTopologica.inserirInicio(u);
+}
+
+
+
+
+
+
+
+
+
+BuscaEmProfundidade_MA::BuscaEmProfundidade_MA(){
+    cor = nullptr;
+    predecessorVertice = tempoEntrada = tempoSaida = nullptr;
+}
+
+BuscaEmProfundidade_MA::~BuscaEmProfundidade_MA(){
+    if(cor != nullptr)
+        delete [] cor;
+    if(predecessorVertice != nullptr)
+        delete [] predecessorVertice;
+    if(tempoEntrada != nullptr)
+        delete [] tempoEntrada;
+    if(tempoSaida != nullptr)
+        delete [] tempoSaida;
+}
+
+void BuscaEmProfundidade_MA::DFS(Grafo_MA& G){
+    tempo = 0;
+    cor = new Cor[G.getTamanho()+1];
+    predecessorVertice = new int [G.getTamanho()+1];
+    tempoEntrada = new int [G.getTamanho()+1];
+    tempoSaida = new int [G.getTamanho()+1];
+
+    for(Vertice u = 1; u <= G.getTamanho(); u++){
+        cor[u] = Branco;
+        predecessorVertice[u] = -1;
+    }
+    for(Vertice u = 1; u <= G.getTamanho(); u++)
+        if(cor[u] == Branco)
+            DFS_VISITA(G, u);
+}
+
+
+void BuscaEmProfundidade_MA::DFS_VISITA(Grafo_MA& G, int u){
+    cout << "Vertice: " << u << '\n';
+    tempo++;
+    tempoEntrada[u] = tempo;
+    cor[u] = Cinza;
+
+
+    for(int v = 1; v <= G.getTamanho(); v++){
+        int a = G.getMatriz()[u][v];
+        if(a != 0) //!= 0 pois a quando uma posicao é 0 é porque não existem arestas
+            if(cor[v] == Branco){
+            predecessorVertice[v] = u;
+            DFS_VISITA(G, v);
+        }
+    }
+
+    cor[u] = Preto;
+    tempo++;
+    tempoSaida[u] = tempo;
+    ordemTopologica.inserirInicio(u);
 }

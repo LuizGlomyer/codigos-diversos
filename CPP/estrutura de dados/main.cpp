@@ -11,6 +11,7 @@ using namespace std;
 
 #include "aleatorio.hpp"
 
+
 int main(){
     sementeAleatoria();
     //cout << "Teste de filas: " << endl;
@@ -49,6 +50,7 @@ int main(){
     p2.inserir("teste");
     p2.inserir("charponteiro");
     p2.mostrarPilha();
+
 
     //cout << "Teste de listas ligadas: " << endl;
     ListaLigada<string> l1;
@@ -160,6 +162,7 @@ int main(){
     a.percorreEmOrdem(-1);
 
 */
+
 /*
     Grafo_LA g(5);
     g.inserirAresta(3,2);
@@ -168,26 +171,62 @@ int main(){
     g.inserirAresta(1,1);
     g.inserirAresta(4,2);
     g.inserirAresta(5,1);
-    g.mostrar();
-    cout << endl;
+    //g.mostrar();
+    cout << '\n';
 
     g.reinicializar(8);
     for(int i = 0; i < 20; i++)
         g.inserirAresta(uintAleatorio(1,8), uintAleatorio(1,8));
-    g.mostrar();
+    //g.mostrar();
+
+
+    BuscaEmProfundidade b;
+    b.DFS(g);
+    cout << '\n';
+
+    Grafo_LA h(9);
+     // 1 cinto, 2  camisa, 3 calca, 4 gravata, 5 sapato, 6 meia, 7 relogio, 8 jaqueta, 9 cueca
+    h.inserirArestaDirecionada(1,8);
+    h.inserirArestaDirecionada(2,4);
+    h.inserirArestaDirecionada(6,5);
+    h.inserirArestaDirecionada(4,8);
+    h.inserirArestaDirecionada(3,5);
+    h.inserirArestaDirecionada(9,3);
+    h.inserirArestaDirecionada(3,1);
+    h.inserirArestaDirecionada(9,5);
+    h.inserirArestaDirecionada(2,1);
+    BuscaEmProfundidade b2;
+    b2.DFS(h);
+    for(int i = 0; i < 9; i++)
+        cout << b2.ordemTopologica[i] << '\n';
+
 */
+
+    /*ListaLigada<int> l;
+    l.inserir(5);
+    l.inserir(8);
+    l.inserir(90);
+    l.inserir(12);
+    l.inserir(45);
+    l.inserir(77);
+    l.inserir(99);
+
+    int* t = l.retornaInteiros();
+    for(int i = 1; i < t[0]; i++)
+        cout << t[i] << '\n';
+*/
+
+
+
     Grafo_MA h(5);
-    h.inserirAresta(1,5);
-    h.inserirAresta(4,2);
-    h.inserirAresta(3,3);
+    h.inserirAresta(1,4);
+    h.inserirAresta(5,2);
+    h.inserirAresta(4,3);
+    h.inserirAresta(3,5);
     h.mostrar();
-    h.reinicializar(4);
-    h.mostrar();
-    h.inserirAresta(4,4);
-    h.inserirAresta(3,3);
-    h.inserirAresta(2,2);
-    h.inserirAresta(1,1);
-    h.mostrar();
+
+    BuscaEmProfundidade_MA m;
+    m.DFS(h);
 
     return 0;
 }
