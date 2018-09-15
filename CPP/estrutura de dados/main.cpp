@@ -202,6 +202,8 @@ int main(){
 
 */
 
+
+
     /*ListaLigada<int> l;
     l.inserir(5);
     l.inserir(8);
@@ -217,16 +219,71 @@ int main(){
 */
 
 
-
+/*
     Grafo_MA h(5);
     h.inserirAresta(1,4);
     h.inserirAresta(5,2);
+    h.inserirAresta(4,2);
     h.inserirAresta(4,3);
     h.inserirAresta(3,5);
     h.mostrar();
 
     BuscaEmProfundidade_MA m;
     m.DFS(h);
+*/
+
+
+/*
+    Grafo_LA g(13);
+    g.inserirAresta(1,11);
+    g.inserirAresta(2,11);
+    g.inserirAresta(11,3);
+    g.inserirAresta(11,10);
+    g.inserirAresta(3,4);
+    g.inserirAresta(4,5);
+    g.inserirAresta(4,10);
+    g.inserirAresta(5,12);
+    g.inserirAresta(10,13);
+    g.inserirAresta(10,12);
+    g.inserirAresta(12,6);
+    g.inserirAresta(12,7);
+    g.inserirAresta(12,8);
+    g.inserirAresta(7,8);
+    g.inserirAresta(8,13);
+    g.inserirAresta(13,9);
+    g.mostrar();
+    BuscaEmLargura b;
+    int ver = 1;
+    b.BFS(g,ver);
+    cout << '\n';
+    for(int i = 1; i <= g.getTamanho(); i++){
+        cout << "Distancia do vertice " << i << " ate o vertice " << ver << ": " << b.getDistancia()[i] << '\n';
+    }
+*/
+    Grafo_MA h(13);
+    h.inserirAresta(1,11);
+    h.inserirAresta(2,11);
+    h.inserirAresta(11,3);
+    h.inserirAresta(11,10);
+    h.inserirAresta(3,4);
+    h.inserirAresta(4,5);
+    h.inserirAresta(4,10);
+    h.inserirAresta(5,12);
+    h.inserirAresta(10,13);
+    h.inserirAresta(10,12);
+    h.inserirAresta(12,6);
+    h.inserirAresta(12,7);
+    h.inserirAresta(12,8);
+    h.inserirAresta(7,8);
+    h.inserirAresta(8,13);
+    h.inserirAresta(13,9);
+    h.mostrar();
+    BuscaEmLargura_MA b;
+    int ver = 10;
+    b.BFS(h, ver);
+    for(int i = 1; i <= h.getTamanho(); i++){
+        cout << "Distancia de " << i << " ate " << ver << ": " << b.getDistancia()[i] << '\n';
+    }
 
     return 0;
 }

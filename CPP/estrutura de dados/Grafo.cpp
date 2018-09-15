@@ -163,7 +163,7 @@ BuscaEmProfundidade::~BuscaEmProfundidade(){
 
 void BuscaEmProfundidade::DFS(Grafo_LA& G){
     tempo = 0;
-    cor = new Cor[G.getTamanho()+1];
+    cor = new Cor [G.getTamanho()+1];
     predecessorVertice = new int [G.getTamanho()+1];
     tempoEntrada = new int [G.getTamanho()+1];
     tempoSaida = new int [G.getTamanho()+1];
@@ -204,12 +204,6 @@ void BuscaEmProfundidade::DFS_VISITA(Grafo_LA& G, int u){
 
 
 
-
-
-
-
-
-
 BuscaEmProfundidade_MA::BuscaEmProfundidade_MA(){
     cor = nullptr;
     predecessorVertice = tempoEntrada = tempoSaida = nullptr;
@@ -242,7 +236,6 @@ void BuscaEmProfundidade_MA::DFS(Grafo_MA& G){
             DFS_VISITA(G, u);
 }
 
-
 void BuscaEmProfundidade_MA::DFS_VISITA(Grafo_MA& G, int u){
     cout << "Vertice: " << u << '\n';
     tempo++;
@@ -263,4 +256,104 @@ void BuscaEmProfundidade_MA::DFS_VISITA(Grafo_MA& G, int u){
     tempo++;
     tempoSaida[u] = tempo;
     ordemTopologica.inserirInicio(u);
+}
+
+
+
+BuscaEmLargura::BuscaEmLargura(){
+    cor = nullptr;
+    predecessorVertice = nullptr;
+    distancia = nullptr;
+    distAtual = 0;
+}
+
+BuscaEmLargura::~BuscaEmLargura(){
+    if(cor != nullptr)
+        delete [] cor;
+    if(predecessorVertice != nullptr)
+        delete [] predecessorVertice;
+    if(distancia != nullptr)
+        delete [] distancia;
+}
+
+void BuscaEmLargura::BFS(Grafo_LA& G, Vertice u){
+    cor = new Cor [G.getTamanho()+1];
+    predecessorVertice = new int [G.getTamanho()+1];
+    distancia = new int[G.getTamanho()+1];
+    for(Vertice t = 1; t <= G.getTamanho(); t++){
+        cor[t] = Branco;
+        predecessorVertice[t] = -1;
+        distancia[t] = -1;
+    }
+    cor[u] = Cinza;
+    distancia[u] = 0;
+    fila.adicionar(u);
+    while(!fila.estaVazia()){
+        u = fila.pop();
+        int* adjacenciaVertice = G.getAdj()[u].retornaInteiros();
+        for(Vertice v = 1; v < adjacenciaVertice[0]; v++)
+            if(cor[adjacenciaVertice[v]] == Branco){
+                cor[adjacenciaVertice[v]] = Cinza;
+                distancia[adjacenciaVertice[v]] = distancia[u] + 1;
+                predecessorVertice[adjacenciaVertice[v]] = u;
+                fila.adicionar(adjacenciaVertice[v]);
+            }
+        cor[u] = Preto;
+    }
+}
+
+int* BuscaEmLargura::getDistancia() const{
+    return distancia;
+}
+
+
+
+BuscaEmLargura_MA::BuscaEmLargura_MA(){
+    cor = nullptr;
+    predecessorVertice = nullptr;
+    distancia = nullptr;
+    distAtual = 0;
+}
+
+BuscaEmLargura_MA::~BuscaEmLargura_MA(){
+    if(cor != nullptr)
+        delete [] cor;
+    if(predecessorVertice != nullptr)
+        delete [] predecessorVertice;
+    if(distancia != nullptr)
+        delete [] distancia;
+}
+
+void BuscaEmLargura_MA::BFS(Grafo_MA& G, Vertice u){
+    cor = new Cor [G.getTamanho()+1];
+    predecessorVertice = new int [G.getTamanho()+1];
+    distancia = new int [G.getTamanho()+1];
+
+    for(Vertice v = 1; v <= G.getTamanho(); v++){
+        cor[v] = Branco;
+        predecessorVertice[v] = -1;
+        distancia[v] = -1;
+    }
+    cor[u] = Cinza;
+    distancia[u] = 0;
+    predecessorVertice[u] = -1;
+    fila.adicionar(u);
+    while(!fila.estaVazia()){
+        u = fila.pop();
+        for(Vertice v = 1; v <= G.getTamanho(); v++){
+            int a = G.getMatriz()[u][v];
+            if(a != 0)
+                if(cor[v] == Branco){
+                    cor[v] = Cinza;
+                    distancia[v] = distancia[u] + 1;
+                    predecessorVertice[v] = u;
+                    fila.adicionar(v);
+                }
+        }
+        cor[u] = Preto;
+    }
+}
+
+int* BuscaEmLargura_MA::getDistancia() const{
+    return distancia;
 }

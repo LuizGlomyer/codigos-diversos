@@ -10,12 +10,12 @@ class Fila{
         ~Fila();
         void adicionar(T);
         void remover();
+        T pop();
+        bool estaVazia() const;
         void esvaziar();
         void mostrarFila() const;
     private:
         ELEMENTO<T>* primeiro,* ultimo;
-
-
 };
 
 template<typename T>
@@ -58,6 +58,30 @@ void Fila<T>::remover(){
     ELEMENTO<T>* e = primeiro->prox;
     delete primeiro;
     primeiro = e;
+}
+
+template<typename T>
+T Fila<T>::pop(){
+    if(primeiro == nullptr){
+        throw bad_alloc();
+        //return * new T;
+    }
+    if(primeiro == ultimo){
+        T dado = primeiro->dados;
+        delete primeiro;
+        primeiro = ultimo = nullptr;
+        return dado;
+    }
+    T dado = primeiro->dados;
+    ELEMENTO<T>* e = primeiro->prox;
+    delete primeiro;
+    primeiro = e;
+    return dado;
+}
+
+template<typename T>
+bool Fila<T>::estaVazia() const{
+    return primeiro == nullptr ? true : false;
 }
 
 template<typename T>
