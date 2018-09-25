@@ -11,7 +11,6 @@ using namespace std;
 
 #include "aleatorio.hpp"
 
-
 int main(){
     sementeAleatoria();
     //cout << "Teste de filas: " << endl;
@@ -260,6 +259,8 @@ int main(){
         cout << "Distancia do vertice " << i << " ate o vertice " << ver << ": " << b.getDistancia()[i] << '\n';
     }
 */
+
+/*
     Grafo_MA h(13);
     h.inserirAresta(1,11);
     h.inserirAresta(2,11);
@@ -284,6 +285,76 @@ int main(){
     for(int i = 1; i <= h.getTamanho(); i++){
         cout << "Distancia de " << i << " ate " << ver << ": " << b.getDistancia()[i] << '\n';
     }
+    */
+
+    /*cout << 9/2 << "\n \n \n \n";
+    FilaPrioridades a(5);
+    a.inserir(1,2);
+    a.inserir(3,7);
+    a.inserir(2,1);
+    a.inserir(4,5);
+    a.inserir(3,3);
+    a.atualizarPrioridade(2,99);
+    PRIORIDADE b = a.extrairMinimo();
+    cout << b.vertice << " " << b.prioridade << endl;
+    b = a.extrairMinimo();
+    cout << b.vertice << " " << b.prioridade << endl;
+    b = a.extrairMinimo();
+    cout << b.vertice << " " << b.prioridade << endl;
+    b = a.extrairMinimo();
+    cout << b.vertice << " " << b.prioridade << endl;
+    b = a.extrairMinimo();
+    cout << b.vertice << " " << b.prioridade << endl;*/
+
+/*
+    Grafo_MA g(3);
+    MST_MA m;
+    g.reinicializar(4);
+    g.inserirAresta(1,2,1);
+    g.inserirAresta(2,3,2);
+    g.inserirAresta(3,4,3);
+    g.inserirAresta(4,1,4);
+    g.inserirAresta(2,4,6);
+    g.inserirAresta(1,3,5);
+
+    m.MST_Prim(g,3);
+    m.mostrar(g);
+    cout << "\n\n\n";
+
+    g.reinicializar(9);
+    m.reinicializar();
+    g.inserirAresta(1, 2, 4); //grafo do slide aula 12 MST
+    g.inserirAresta(1, 8, 8);
+    g.inserirAresta(2, 3, 8);
+    g.inserirAresta(2, 8, 11);
+    g.inserirAresta(3, 4, 7);
+    g.inserirAresta(3, 6, 4);
+    g.inserirAresta(3, 9, 2);
+    g.inserirAresta(4, 5, 9);
+    g.inserirAresta(4, 6, 14);
+    g.inserirAresta(5, 6, 10);
+    g.inserirAresta(6, 7, 2);
+    g.inserirAresta(7, 8, 1);
+    g.inserirAresta(7, 9, 6);
+    g.inserirAresta(8, 9, 7);
+    m.MST_Prim(g, 8); //valores aparentemente resultam em arvores diferentes, mas com mesmo somatorio
+    m.mostrar(g);
+    cout << INT_MAX;*/
+
+    Grafo_LA g(5);
+    Dijkstra d;
+    g.inserirArestaDirecionada(1, 2, 10);
+    g.inserirArestaDirecionada(1, 4, 5);
+    g.inserirArestaDirecionada(2, 3, 1);
+    g.inserirArestaDirecionada(2, 4, 2);
+    g.inserirArestaDirecionada(3, 5, 4);
+    g.inserirArestaDirecionada(4, 2, 3);
+    g.inserirArestaDirecionada(4, 3, 9);
+    g.inserirArestaDirecionada(4, 5, 2);
+    g.inserirArestaDirecionada(5, 1, 7);
+    g.inserirArestaDirecionada(5, 3, 6);
+    d.menorCaminho(g, 4);
+    d.mostrarDistancia(g, 4);
 
     return 0;
 }

@@ -5,24 +5,28 @@
 #include "Fila.hpp"
 
 typedef int Vertice;
+typedef int Peso;
 enum Cor {Branco, Cinza, Preto};
+
 
 //Grafo por lista de adjacências
 class Grafo_LA{
 public:
     Grafo_LA(int);
     ~Grafo_LA();
-    void inserirAresta(Vertice, Vertice);
-    void inserirArestaDirecionada(Vertice, Vertice);
+    void inserirAresta(Vertice, Vertice, Peso = 0);
+    void inserirArestaDirecionada(Vertice, Vertice, Peso = 0);
     void removerAresta(Vertice, Vertice);
     void mostrar();
     void reinicializar(int);
     ListaLigada<Vertice>* getAdj();
+    int** getPesos() const;
     int getTamanho();
 
     friend void DFS(Grafo_LA&);
     friend void DSF_VISITA(Grafo_LA&);
 private:
+    int** pesos;
     void inicializar(int);
     void destruir();
     ListaLigada<Vertice>* adj;
@@ -34,17 +38,19 @@ class Grafo_MA{
 public:
     Grafo_MA(int);
     ~Grafo_MA();
-    void inserirAresta(Vertice, Vertice);
+    void inserirAresta(Vertice, Vertice, Peso = 0);
     void removerAresta(Vertice, Vertice);
     void mostrar();
     void reinicializar(int);
     int getTamanho();
-    int** getMatriz();
+    int** getMatriz() const;
+    int** getPesos() const;
 private:
     void inicializar(int);
     void destruir();
     int n, m;
     int** mat;
+    int** pesos;
 };
 
 //para grafo LA
@@ -106,5 +112,54 @@ private:
     Fila<Vertice> fila;
 
 };
+
+class MST{
+public:
+    MST();
+    ~MST();
+    void destruir();
+    void reinicializar();
+    void MST_Prim(Grafo_LA&, Vertice);
+    void MST_Kruskal(Grafo_LA&);
+    void mostrar(Grafo_LA&);
+    void mostrarSomatorio(Grafo_LA&);
+private:
+    int n;
+    int* chave;
+    Vertice* pai;
+    FilaPrioridades* fila;
+};
+
+class MST_MA{
+public:
+    MST_MA();
+    ~MST_MA();
+    void destruir();
+    void reinicializar();
+    void MST_Prim(Grafo_MA&, Vertice);
+    void MST_Kruskal(Grafo_MA&);
+    void mostrar(Grafo_MA&);
+    void mostrarSomatorio(Grafo_MA&);
+private:
+    int* chave;
+    Vertice* pai;
+    FilaPrioridades* fila;
+};
+
+class Dijkstra{
+public:
+    Dijkstra();
+    ~Dijkstra();
+    void menorCaminho(Grafo_LA&, Vertice);
+    void relaxa(Vertice, Vertice);
+    void mostrarDistancia(Grafo_LA&, Vertice);
+private:
+    int n;
+    int** peso;
+    int* pai;
+    int* distancia;
+    FilaPrioridades* fila;
+};
+
 
 #endif // GRAFO_HPP_INCLUDED

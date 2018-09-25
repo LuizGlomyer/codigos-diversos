@@ -9,10 +9,10 @@
 	"Fila.hpp"
 	"ELEMENTO.hpp"
 
-1536955132 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\fila.hpp
+1537751556 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\fila.hpp
 	"ELEMENTO.hpp"
 
-1536970572 source:c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\main.cpp
+1537887564 source:c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\main.cpp
 	<iostream>
 	"Fila.hpp"
 	"Pilha.hpp"
@@ -56,11 +56,15 @@
 
 1534812263 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\no.hpp
 
-1536969368 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\grafo.hpp
+1537799155 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\grafo.hpp
 	"ListaLigada.hpp"
 	"Fila.hpp"
 
-1536972477 source:c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\grafo.cpp
+1537886932 source:c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\grafo.cpp
 	"Grafo.hpp"
+	"UnionFind.hpp"
 	<iostream>
+	<limits>
+
+1537796838 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\unionfind.hpp
 

@@ -3,6 +3,70 @@
 
 #include "ELEMENTO.hpp"
 
+struct PRIORIDADE{
+    int vertice;
+    int prioridade;
+};
+
+class FilaPrioridades{
+private:
+public:
+    FilaPrioridades(int tam){
+        elemento = new PRIORIDADE[tam];
+        qtd = 0;
+    }
+
+    ~FilaPrioridades(){
+        delete [] elemento;
+    }
+
+    PRIORIDADE* elemento;
+    int qtd;
+
+    void inserir(int vertice, int prioridade){
+        elemento[qtd].vertice = vertice;
+        elemento[qtd].prioridade = prioridade;
+        qtd++;
+    }
+    bool estaVazia(){
+        return qtd == 0 ? true : false;
+    }
+
+    bool estaNaFila(int n){
+        for(int i = 0; i < qtd; i++)
+            if(elemento[i].vertice == n)
+                return true;
+        return false;
+    }
+
+    PRIORIDADE extrairMinimo(){
+        if(qtd == 0)
+            exit(123);
+        int min = 0; //pos
+        for(int i = 0; i < qtd; i++)
+            if(elemento[i].prioridade < elemento[min].prioridade)
+                min = i;
+
+        PRIORIDADE a;
+        a.prioridade = elemento[min].prioridade;
+        a.vertice = elemento[min].vertice;
+
+        for(int i = min; i < qtd-1; i++){
+            elemento[i] = elemento[i+1];
+        }
+        qtd--;
+        return a;
+    }
+    void atualizarPrioridade(int v, int novaPrio){
+        for(int i = 0; i < qtd; i++)
+            if(elemento[i].vertice == v){
+                elemento[i].prioridade = novaPrio;
+                return;
+            }
+    }
+};
+
+
 template<typename T>
 class Fila{
     public:
@@ -10,13 +74,16 @@ class Fila{
         ~Fila();
         void adicionar(T);
         void remover();
+        T extrairMinimo();
         T pop();
         bool estaVazia() const;
+        bool estaNaFila(T) const;
         void esvaziar();
         void mostrarFila() const;
     private:
         ELEMENTO<T>* primeiro,* ultimo;
 };
+
 
 template<typename T>
 Fila<T>::Fila(){
@@ -61,6 +128,12 @@ void Fila<T>::remover(){
 }
 
 template<typename T>
+T Fila<T>::extrairMinimo(){
+
+}
+
+
+template<typename T>
 T Fila<T>::pop(){
     if(primeiro == nullptr){
         throw bad_alloc();
@@ -82,6 +155,18 @@ T Fila<T>::pop(){
 template<typename T>
 bool Fila<T>::estaVazia() const{
     return primeiro == nullptr ? true : false;
+}
+template<typename T>
+bool Fila<T>::estaNaFila(T dado) const{
+    if(primeiro == nullptr)
+        return false;
+    ELEMENTO<T>* e = primeiro;
+    while(e != nullptr){
+        if(e->dados == dado)
+            return true;
+        e = e->prox;
+    }
+    return false;
 }
 
 template<typename T>
