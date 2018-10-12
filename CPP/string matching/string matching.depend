@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1539375996 source:c:\users\glomy\desktop\comp\cpp\aed2\string matching\main.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"ListaLigada.hpp"
+
+1539368514 c:\users\glomy\desktop\comp\cpp\aed2\string matching\listaligada.hpp
+	"ELEMENTO.hpp"
+	<iostream>
+
+1534649657 c:\users\glomy\desktop\comp\cpp\aed2\string matching\elemento.hpp
+
