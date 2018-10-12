@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1538332486 source:c:\users\glomy\desktop\comp\cpp\aed2\combinatoria\combinacao.cpp
+	<iostream>
+	"combinacao.hpp"
+
+1538332793 c:\users\glomy\desktop\comp\cpp\aed2\combinatoria\combinacao.hpp
+	"Pilha.hpp"
+	"fatorial.hpp"
+
+1539362303 source:c:\users\glomy\desktop\comp\cpp\aed2\combinatoria\main.cpp
+	<iostream>
+	<string>
+	<cmath>
+	"combinacao.hpp"
+	"ListaLigada.hpp"
+	<stdio.h>
+	<stdlib.h>
+
+1538333894 c:\users\glomy\desktop\comp\cpp\aed2\combinatoria\pilha.hpp
+	"ELEMENTO.hpp"
+
+1534649657 c:\users\glomy\desktop\comp\cpp\aed2\combinatoria\elemento.hpp
+
+1538332118 c:\users\glomy\desktop\comp\cpp\aed2\combinatoria\combinacao.cpp
+	<iostream>
+	"combinacao.hpp"
+	"Pilha.hpp"
+
+1538332760 c:\users\glomy\desktop\comp\cpp\aed2\combinatoria\fatorial.hpp
+
+1539362320 c:\users\glomy\desktop\comp\cpp\aed2\combinatoria\listaligada.hpp
+	"ELEMENTO.hpp"
+	<iostream>
+
