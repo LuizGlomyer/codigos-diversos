@@ -30,20 +30,36 @@ ListaLigada<int>* stringMatcherIngenuo(char* texto, char* str){
 
 
 
-void criaAlfabeto(char* alfabeto, char* str){
-    alfabeto = new char[128];
+void criaAlfabeto(int* alfabeto, char* str){
+    alfabeto = new int[128];
     for(int i = 0; i < 128; i++)
-        alfabeto[i] = 66;
-    for(unsigned int j = 0; j < strlen(str); j++)
-        alfabeto[(int)str[j]] = j;
+        alfabeto[i] = -1;
+    for(unsigned int j = 0; j < strlen(str); j++){
+        int a = (int)str[j];
+        alfabeto[a] = j;
+        //cout << '\n' << alfabeto[a];
+    }
     for(int i = 0; i < 128; i++)
-        cout << alfabeto[i];
+        cout << "posicao " << i << ": " <<alfabeto[i] << '\n';
 }
 
 ListaLigada<int>* BoyerMoore(char* texto, char* str){
-    char* alfabeto = nullptr;
+    int* alfabeto = nullptr;
     ListaLigada<int>* deslocamentos = new ListaLigada<int>;
-    criaAlfabeto(alfabeto, str);
+
+
+
+    alfabeto = new int[128];
+    for(int i = 0; i < 128; i++)
+        alfabeto[i] = -1;
+    for(unsigned int j = 0; j < strlen(str); j++){
+        int a = (int)str[j];
+        alfabeto[a] = j;
+        //cout << '\n' << alfabeto[a];
+    }
+
+
+
     int n = strlen(texto), m = strlen(str);
     int salto = 0;
 
@@ -58,8 +74,10 @@ ListaLigada<int>* BoyerMoore(char* texto, char* str){
                 break;
             }
         }
-        if(salto == 0)
-            return deslocamentos;
+        if(salto == 0){
+            deslocamentos->inserir(i);
+            salto++;
+        }
     }
 
 
@@ -79,28 +97,41 @@ int main(){
 
     char* str = new char[strlen(input)+1]; //strlen não inclui o espaço para o \0
     strcpy(str, input);
-    cout << str << " " << strlen(str) << '\n';
+    cout << str << " " << strlen(str) << "\n\n";
 
     ListaLigada<int>* deslocamentos = BoyerMoore(texto, str);
 
+    char* teste = new char[strlen(input)+1]; //strlen não inclui o espaço para o \0
+    teste[strlen(input)] = '\0'; //ultima posicao
+    for(int i = 0; i < deslocamentos->getTamanho()+1; i++){
+        for(int j = 0; j < strlen(str); j++)
+            teste[j] = texto[deslocamentos[0][i] + j];
+        cout << teste;
+        cout << deslocamentos[0][i];
+        cout << "\n";
+    }
 
 
 
 
-    /*
-    ListaLigada<int>* deslocamentos = stringMatcherIngenuo(texto, str);
+
+    /*ListaLigada<int>* deslocamentos = stringMatcherIngenuo(texto, str);
 
     deslocamentos->mostrarLista();
     char* teste = new char[strlen(input)+1]; //strlen não inclui o espaço para o \0
     teste[strlen(input)] = '\0'; //ultima posicao
     for(int i = 0; i < deslocamentos->getTamanho()+1; i++){
         for(int j = 0; j < strlen(str); j++)
-            teste[j] = texto[deslocamentos[1][i] + j];
+            teste[j] = texto[deslocamentos[0][i] + j];
         cout << "\n" << teste;
-        //cout << deslocamentos[1][i] << "\n"; //colocar [1] já que alocamos apenas uma unidade, senão o compilador pensa que estamos na posição i de um vetor de listaligada, já que a variável é um ponteiro
-    }
+        //cout << deslocamentos[0][i] << "\n"; //colocar [0] já que alocamos apenas uma unidade, senão o compilador pensa que estamos na posição i de um vetor de listaligada, já que a variável é um ponteiro
+    }*/
+
+
+
+
     delete deslocamentos;
-    */
+
 
 
     return 0;
