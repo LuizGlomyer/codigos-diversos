@@ -1,18 +1,31 @@
 # depslib dependency file v1.0
-1534344109 source:c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\elemento.cpp
-	"ELEMENTO.hpp"
-
-1534649657 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\elemento.hpp
-
-1534556119 source:c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\fila.cpp
+1543009191 source:c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\grafo.cpp
+	"Grafo.hpp"
+	"UnionFind.hpp"
+	"heapsort.hpp"
 	<iostream>
+	<limits>
+
+1542316371 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\grafo.hpp
+	"ListaLigada.hpp"
 	"Fila.hpp"
-	"ELEMENTO.hpp"
 
-1537751556 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\fila.hpp
+1540773322 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\listaligada.hpp
 	"ELEMENTO.hpp"
+	<iostream>
 
-1537887564 source:c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\main.cpp
+1534653257 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\elemento.hpp
+
+1540833056 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\fila.hpp
+	"ELEMENTO.hpp"
+	"ListaLigada.hpp"
+
+1543009700 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\unionfind.hpp
+	"ListaLigada.hpp"
+
+1534912877 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\heapsort.hpp
+
+1543009283 source:c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\main.cpp
 	<iostream>
 	"Fila.hpp"
 	"Pilha.hpp"
@@ -23,48 +36,24 @@
 	"Grafo.hpp"
 	"aleatorio.hpp"
 
-1534556119 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\fila.cpp
-	<iostream>
-	"Fila.hpp"
+1538337494 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\pilha.hpp
 	"ELEMENTO.hpp"
 
-1534716145 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\pilha.hpp
+1534720120 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\listadupla.hpp
 	"ELEMENTO.hpp"
 
-1534648858 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\listaligada.h
-	"ELEMENTO.hpp"
-
-1536719235 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\listaligada.hpp
-	"ELEMENTO.hpp"
-	<iostream>
-
-1534716520 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\listadupla.hpp
-	"ELEMENTO.hpp"
-
-1534722910 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\tabelahash.hpp
+1534726510 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\tabelahash.hpp
 	"ELEMENTO.hpp"
 	"ListaLigada.hpp"
 
-1534810927 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\aleatorio.hpp
+1535251338 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\arvore.hpp
+	"No.hpp"
+
+1534815863 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\no.hpp
+
+1534814527 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\aleatorio.hpp
 	<ctime>
 	<cstdlib>
 	<cctype>
 	<cmath>
-
-1535247738 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\arvore.hpp
-	"No.hpp"
-
-1534812263 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\no.hpp
-
-1537799155 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\grafo.hpp
-	"ListaLigada.hpp"
-	"Fila.hpp"
-
-1537886932 source:c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\grafo.cpp
-	"Grafo.hpp"
-	"UnionFind.hpp"
-	<iostream>
-	<limits>
-
-1537796838 c:\users\glomy\desktop\comp\cpp\aed2\estrutura de dados\unionfind.hpp
 

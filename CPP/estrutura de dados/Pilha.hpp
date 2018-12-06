@@ -10,7 +10,9 @@ public:
     ~Pilha();
     void adicionar(T);
     void remover();
+    T pop();
     void esvaziar();
+    bool estaVazia() const;
     void mostrarPilha() const;
 private:
     ELEMENTO<T>* topo;
@@ -56,6 +58,15 @@ void Pilha<T>::remover(){
 }
 
 template<typename T>
+T Pilha<T>::pop(){
+    T retorno = topo->dados;
+    ELEMENTO<T>* e = topo->prox;
+    delete topo;
+    topo = e;
+    return retorno;
+}
+
+template<typename T>
 void Pilha<T>::esvaziar(){
     ELEMENTO<T>* e = topo,* excluir;
     while(e != nullptr){
@@ -63,6 +74,11 @@ void Pilha<T>::esvaziar(){
         e = e->prox;
         delete excluir;
     }
+}
+
+template<typename T>
+bool Pilha<T>::estaVazia() const{
+    return topo == nullptr ? true : false;
 }
 
 template<typename T>

@@ -21,7 +21,8 @@ public:
     void reinicializar(int);
     ListaLigada<Vertice>* getAdj();
     int** getPesos() const;
-    int getTamanho();
+    int getTamanho() const;
+    int getNumArestas() const;
 
     friend void DFS(Grafo_LA&);
     friend void DSF_VISITA(Grafo_LA&);
@@ -39,6 +40,7 @@ public:
     Grafo_MA(int);
     ~Grafo_MA();
     void inserirAresta(Vertice, Vertice, Peso = 0);
+    void inserirArestaDirecionada(Vertice, Vertice, Peso = 0);
     void removerAresta(Vertice, Vertice);
     void mostrar();
     void reinicializar(int);
@@ -90,6 +92,7 @@ public:
     ~BuscaEmLargura();
     void BFS(Grafo_LA&, Vertice);
     int* getDistancia() const;
+    int* getPredecessores() const;
 private:
     Cor* cor;
     int* predecessorVertice;
@@ -127,7 +130,7 @@ private:
     int n;
     int* chave;
     Vertice* pai;
-    FilaPrioridades* fila;
+    FilaPrioridades<int> fila;
 };
 
 class MST_MA{
@@ -143,7 +146,7 @@ public:
 private:
     int* chave;
     Vertice* pai;
-    FilaPrioridades* fila;
+    FilaPrioridades<int> fila;
 };
 
 class Dijkstra{
@@ -152,13 +155,30 @@ public:
     ~Dijkstra();
     void menorCaminho(Grafo_LA&, Vertice);
     void relaxa(Vertice, Vertice);
-    void mostrarDistancia(Grafo_LA&, Vertice);
+    void mostrarDistancia();
 private:
+    int raiz;
     int n;
     int** peso;
     int* pai;
     int* distancia;
-    FilaPrioridades* fila;
+    FilaPrioridades<int> fila;
+};
+
+class Dijkstra_MA{
+public:
+    Dijkstra_MA();
+    ~Dijkstra_MA();
+    void menorCaminho(Grafo_MA&, Vertice);
+    void relaxa(Vertice, Vertice);
+    void mostrarDistancia();
+private:
+    int raiz;
+    int n;
+    int** peso;
+    int* pai;
+    int* distancia;
+    FilaPrioridades<int> fila;
 };
 
 

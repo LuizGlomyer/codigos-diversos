@@ -1,5 +1,6 @@
 #include "Grafo.hpp"
 #include "UnionFind.hpp"
+#include "heapsort.hpp"
 #include <iostream>
 #include <limits>
 using namespace std;
@@ -74,8 +75,12 @@ void Grafo_LA::mostrar(){
     }
 }
 
-int Grafo_LA::getTamanho(){
+int Grafo_LA::getTamanho() const{
     return n;
+}
+
+int Grafo_LA::getNumArestas() const{
+    return m;
 }
 
 int** Grafo_LA::getPesos() const{
@@ -135,13 +140,23 @@ void Grafo_MA::reinicializar(int numVertices){
 
 void Grafo_MA::inserirAresta(Vertice u, Vertice v, Peso p){
     mat[u][v]++;
-    mat[v][u]++;
+    mat[v][u]++;/*
     if(pesos[u][v] != -1 || pesos[v][u] != -1){ //o peso já existir é um erro, estamos trabalhando com grafos simples
+        cout << "ERRO";
+        exit(123);
+    }*/
+    pesos[u][v] = p;
+    pesos[v][u] = p;
+    m++;
+}
+
+void Grafo_MA::inserirArestaDirecionada(Vertice u, Vertice v, Peso p){
+    mat[u][v]++;
+    if(pesos[u][v] != -1){ //o peso já existir é um erro, estamos trabalhando com grafos simples
         cout << "ERRO";
         exit(123);
     }
     pesos[u][v] = p;
-    pesos[v][u] = p;
     m++;
 }
 
@@ -346,6 +361,10 @@ int* BuscaEmLargura::getDistancia() const{
     return distancia;
 }
 
+int* BuscaEmLargura::getPredecessores() const{
+    return predecessorVertice;
+}
+
 
 
 BuscaEmLargura_MA::BuscaEmLargura_MA(){
@@ -400,9 +419,12 @@ int* BuscaEmLargura_MA::getDistancia() const{
 
 
 
+
+
+
 MST::MST(){
     chave = pai = nullptr;
-    fila = nullptr;
+    //fila = nullptr;
 }
 
 MST::~MST(){
@@ -412,7 +434,7 @@ MST::~MST(){
 void MST::reinicializar(){
     destruir();
     chave = pai = nullptr;
-    fila = nullptr;
+    //fila = nullptr;
 }
 
 void MST::destruir(){
@@ -420,13 +442,14 @@ void MST::destruir(){
         delete [] chave;
     if(pai != nullptr)
         delete [] pai;
-    if(fila != nullptr)
-        delete fila;
+    //if(fila != nullptr)
+      //  delete fila;
 }
 
 void MST::MST_Prim(Grafo_LA& G, Vertice r){
     n = G.getTamanho();
-    fila = new FilaPrioridades(n);
+    //fila = new FilaPrioridades(n);
+    FilaPrioridades<int> fila;
     chave = new int[n+1];
     pai = new int[n+1];
 
@@ -436,22 +459,86 @@ void MST::MST_Prim(Grafo_LA& G, Vertice r){
     }
     chave[r] = 0;
     for(int i = 1; i <= n; i++)
-        fila->inserir(i, chave[i]);
-    while(!fila->estaVazia()){
-        Vertice u = fila->extrairMinimo().vertice;
+        fila.inserir(i, chave[i]);
+    while(!fila.estaVazia()){
+        Vertice u = fila.extrairElementoMinimo();
         int* a = G.getAdj()[u].retornaInteiros();
         for(int i = 1; i < a[0]; i++){
             Vertice v = a[i];
-            if(fila->estaNaFila(v) && G.getPesos()[u][v] < chave[v]){
+            if(fila.estaNaFila(v) && G.getPesos()[u][v] < chave[v]){
                 pai[v] = u;
                 chave[v] = G.getPesos()[u][v];
-                fila->atualizarPrioridade(v, chave[v]);
+                fila.atualizarPrioridade(v, chave[v]);
             }
         }
     }
 }
 
 void MST::MST_Kruskal(Grafo_LA& G){
+    UnionFind<int> uniao;
+    int n = G.getTamanho();
+    for(Vertice u = 1; u <= n; u++)
+        uniao.makeSet(u);
+
+    //ordenando os vertices
+    ListaLigada<int> vertices;
+    int* a;
+
+    struct Aresta{
+        int v1;
+        int v2;
+        int peso;
+        bool operator>(Aresta& a){
+            return peso > a.peso ? true : false;
+        }
+        bool operator<(Aresta& a){
+            return !operator>(a);
+        }
+        bool estaNaStruct(Vertice u, Vertice v){
+            if((u == v1 && v == v2) || (u == v2 && v == v1))
+                return true;
+            return false;
+        }
+    };
+    int m = G.getNumArestas();
+    Aresta arestas[m];
+    for(int i = 0; i < m; i++)
+        arestas[i].v1 = arestas[i].v2 = arestas[i].peso = 0;
+
+    int pos = 0;
+    for(Vertice u = 1; u <= n; u++){ //adjacencia de cada vertice
+        a = G.getAdj()[u].retornaInteiros();
+        for(Vertice v = 1; v < a[0]; v++){// cada vertice adjacente
+            bool esta = false;
+            for(int i = 0; i < m; i++)
+                if(arestas[i].estaNaStruct(u, a[v]))
+                    esta = true;
+            if(!esta){
+                arestas[pos].v1 = u;
+                arestas[pos].v2 = a[v];
+                arestas[pos].peso = G.getPesos()[u][a[v]];
+                pos++;
+            }
+        }
+    }
+    for(int i = 0; i < m; i++){
+        cout << "Vertices " << arestas[i].v1 << " " << arestas[i].v2 << " peso " << arestas[i].peso << '\n';
+    }
+    cout << "\n\n";
+    heapsort(arestas, m); //struct arestas ordenadas
+    for(int i = 0; i < m; i++){
+        cout << "Vertices " << arestas[i].v1 << " " << arestas[i].v2 << " peso " << arestas[i].peso << '\n';
+    }
+
+    for(int i = 0; i < m; i++){//para cada aresta
+        auto v1 = uniao.findSet(arestas[i].v1);
+        auto v2 = uniao.findSet(arestas[i].v2);
+        if(&v1 != &v2) {
+            cout << "aaaaaa\n";
+        }
+        else
+            cout << "bbbbbbbbb\n";
+    }
 
 }
 
@@ -478,9 +565,14 @@ void MST::mostrarSomatorio(Grafo_LA& G){
 }
 
 
+
+
+
+
+
 MST_MA::MST_MA(){
     chave = pai = nullptr;
-    fila = nullptr;
+    //fila = nullptr;
 }
 
 MST_MA::~MST_MA(){
@@ -492,37 +584,38 @@ void MST_MA::destruir(){
         delete [] chave;
     if(pai != nullptr)
         delete [] pai;
-    if(fila != nullptr)
-        delete fila;
+    //if(fila != nullptr)
+     //   delete fila;
 }
 
 void MST_MA::reinicializar(){
     destruir();
     pai = chave = nullptr;
-    fila = nullptr;
+    //fila = nullptr;
 }
 
 void MST_MA::MST_Prim(Grafo_MA& G, Vertice r){
     int n = G.getTamanho();
     chave = new int[n+1];
     pai = new int[n+1];
-    fila = new FilaPrioridades(n);
+    //fila = new FilaPrioridades(n);
+    FilaPrioridades<int> fila;
     for(int i = 1; i <= n; i++){
         chave[i] = INT_MAX;
         pai[i] = -1;
     }
     chave[r] = 0;
     for(int i = 1; i <= n; i++)
-        fila->inserir(i, chave[i]);
+        fila.inserir(i, chave[i]);
     int** a = G.getMatriz();
-    while(!fila->estaVazia()){
-        Vertice u = fila->extrairMinimo().vertice;
+    while(!fila.estaVazia()){
+        Vertice u = fila.extrairElementoMinimo();
         for(Vertice v = 1; v <= n; v++)
             if(a[u][v] != 0)
-                if(fila->estaNaFila(v) && G.getPesos()[u][v] < chave[v]){
+                if(fila.estaNaFila(v) && G.getPesos()[u][v] < chave[v]){
                     pai[v] = u;
                     chave[v] = G.getPesos()[u][v];
-                    fila->atualizarPrioridade(v, chave[v]);
+                    fila.atualizarPrioridade(v, chave[v]);
                 }
     }
 }
@@ -554,10 +647,15 @@ void MST_MA::mostrarSomatorio(Grafo_MA& G){
     cout << "O somatorio das chaves eh: " << soma << '\n';
 }
 
+
+
+
+
+
 Dijkstra::Dijkstra(){
     pai = distancia = nullptr;
     peso = nullptr;;
-    fila = nullptr;
+    //fila = nullptr;
 }
 
 Dijkstra::~Dijkstra(){
@@ -565,44 +663,120 @@ Dijkstra::~Dijkstra(){
         delete [] pai;
     if(distancia != nullptr)
         delete [] distancia;
-    if(fila != nullptr)
-        delete fila;
+    //if(fila != nullptr)
+    //    delete fila;
 }
 
 void Dijkstra::menorCaminho(Grafo_LA& G, Vertice r){
+    raiz = r;
     n = G.getTamanho();
     peso = G.getPesos();
     pai = new int[n+1];
     distancia = new int[n+1];
-    fila = new FilaPrioridades(n);
+    //fila = new FilaPrioridades(n);
+    FilaPrioridades<int> fila;
     for(Vertice u = 1; u <= n; u++){
         pai[u] = -1;
         distancia[u] = INT_MAX;
     }
     distancia[r] = 0;
     for(Vertice u = 1; u <= n; u++)
-        fila->inserir(u, distancia[u]);
+        fila.inserir(u, distancia[u]);
 
-    while(!fila->estaVazia()){
-        Vertice u = fila->extrairMinimo().vertice;
+    while(!fila.estaVazia()){
+        Vertice u = fila.extrairElementoMinimo();
         int* a = G.getAdj()[u].retornaInteiros();
         for(Vertice v = 1; v < a[0]; v++){
-            relaxa(u, a[v]);
+            //relaxa(u, a[v]); por algum motivo não funciona -  as filas aparecem vazias dentro do método
+            int m = u, n = a[v];
+            if(distancia[n] > distancia[m] + peso[m][n]){
+                distancia[n] = distancia[m] + peso[m][n];
+                fila.atualizarPrioridade(n, distancia[n]);
+                pai[n] = m;
+            }
         }
     }
 }
 
+
 void Dijkstra::relaxa(Vertice u, Vertice v){
+    int a = distancia[v], b = distancia[u] + peso[u][v];
     if(distancia[v] > distancia[u] + peso[u][v]){
         distancia[v] = distancia[u] + peso[u][v];
-        fila->atualizarPrioridade(v, distancia[v]);
+        fila.atualizarPrioridade(v, distancia[v]);
         pai[v] = u;
     }
 }
 
-void Dijkstra::mostrarDistancia(Grafo_LA& G, Vertice r){
-    int* a = G.getAdj()[r].retornaInteiros();
-    cout << "Raiz: " << r << '\n';
+void Dijkstra::mostrarDistancia(){
+    cout << "Raiz: " << raiz << '\n';
+    for(int i = 1; i <= n; i++){
+        cout << "Distancia ate o vertice " << i << ": " << distancia[i] << '\n';
+    }
+    cout << '\n';
+}
+
+
+Dijkstra_MA::Dijkstra_MA(){
+    pai = distancia = nullptr;
+    peso = nullptr;;
+    //fila = nullptr;
+}
+
+Dijkstra_MA::~Dijkstra_MA(){
+    if(pai != nullptr)
+        delete [] pai;
+    if(distancia != nullptr)
+        delete [] distancia;
+    //if(fila != nullptr)
+    //    delete fila;
+}
+
+void Dijkstra_MA::menorCaminho(Grafo_MA& G, Vertice r){
+    raiz = r;
+    n = G.getTamanho();
+    peso = G.getPesos();
+    pai = new int[n+1];
+    distancia = new int[n+1];
+    int** a = G.getMatriz();
+    //fila = new FilaPrioridades(n);
+    FilaPrioridades<int> fila;
+    for(Vertice u = 1; u <= n; u++){
+        pai[u] = -1;
+        distancia[u] = INT_MAX;
+    }
+    distancia[r] = 0;
+    for(Vertice u = 1; u <= n; u++)
+        fila.inserir(u, distancia[u]);
+
+    while(!fila.estaVazia()){
+        Vertice u = fila.extrairElementoMinimo();
+        for(Vertice v = 1; v <= n; v++){
+            if(a[u][v] != 0){
+            //relaxa(u, a[v]); por algum motivo não funciona -  as filas aparecem vazias dentro do método
+                int m = u, n = v;
+                if(distancia[n] > distancia[m] + peso[m][n]){
+                    distancia[n] = distancia[m] + peso[m][n];
+                    fila.atualizarPrioridade(n, distancia[n]);
+                    pai[n] = m;
+                }
+            }
+        }
+    }
+}
+
+
+void Dijkstra_MA::relaxa(Vertice u, Vertice v){
+    int a = distancia[v], b = distancia[u] + peso[u][v];
+    if(distancia[v] > distancia[u] + peso[u][v]){
+        distancia[v] = distancia[u] + peso[u][v];
+        fila.atualizarPrioridade(v, distancia[v]);
+        pai[v] = u;
+    }
+}
+
+void Dijkstra_MA::mostrarDistancia(){
+    cout << "Raiz: " << raiz << '\n';
     for(int i = 1; i <= n; i++){
         cout << "Distancia ate o vertice " << i << ": " << distancia[i] << '\n';
     }

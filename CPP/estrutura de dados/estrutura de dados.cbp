@@ -40,6 +40,7 @@
 		<Unit filename="No.hpp" />
 		<Unit filename="Pilha.hpp" />
 		<Unit filename="TabelaHash.hpp" />
+		<Unit filename="UnionFind.hpp" />
 		<Unit filename="aleatorio.hpp" />
 		<Unit filename="arvore.hpp" />
 		<Unit filename="main.cpp" />

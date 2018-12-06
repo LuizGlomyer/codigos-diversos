@@ -258,7 +258,12 @@ int main(){
     for(int i = 1; i <= g.getTamanho(); i++){
         cout << "Distancia do vertice " << i << " ate o vertice " << ver << ": " << b.getDistancia()[i] << '\n';
     }
-*/
+
+    int a = 5;
+    while(a != ver){
+        cout << "Predecessor do vertice " << a << " " <<  b.getPredecessores()[a] << '\n';
+        a = b.getPredecessores()[a];
+    }*/
 
 /*
     Grafo_MA h(13);
@@ -296,19 +301,30 @@ int main(){
     a.inserir(3,3);
     a.atualizarPrioridade(2,99);
     PRIORIDADE b = a.extrairMinimo();
-    cout << b.vertice << " " << b.prioridade << endl;
+    cout << b.vertice << " " << b.prioridade << '\n';
     b = a.extrairMinimo();
-    cout << b.vertice << " " << b.prioridade << endl;
+    cout << b.vertice << " " << b.prioridade << '\n';
     b = a.extrairMinimo();
-    cout << b.vertice << " " << b.prioridade << endl;
+    cout << b.vertice << " " << b.prioridade << '\n';
     b = a.extrairMinimo();
-    cout << b.vertice << " " << b.prioridade << endl;
+    cout << b.vertice << " " << b.prioridade << '\n';
     b = a.extrairMinimo();
-    cout << b.vertice << " " << b.prioridade << endl;*/
+    cout << b.vertice << " " << b.prioridade << '\n';*/
 
-/*
-    Grafo_MA g(3);
-    MST_MA m;
+
+/*ListaLigada<ListaLigada<int>> lista;
+    ListaLigada<int> a, b, c;
+    a.inserir(1); a.inserir(2); a.inserir(3);
+    b.inserir(4); b.inserir(5); b.inserir(6);
+    c.inserir(6); c.inserir(7); c.inserir(8);
+    lista.inserir(a); lista.inserir(b); lista.inserir(c);
+    lista.mostrarLista();
+    lista[0].mostrarLista();*/
+
+
+
+    Grafo_LA g(3);
+    MST m;
     g.reinicializar(4);
     g.inserirAresta(1,2,1);
     g.inserirAresta(2,3,2);
@@ -316,8 +332,8 @@ int main(){
     g.inserirAresta(4,1,4);
     g.inserirAresta(2,4,6);
     g.inserirAresta(1,3,5);
-
-    m.MST_Prim(g,3);
+    //m.MST_Kruskal(g);
+    m.MST_Kruskal(g);
     m.mostrar(g);
     cout << "\n\n\n";
 
@@ -337,12 +353,29 @@ int main(){
     g.inserirAresta(7, 8, 1);
     g.inserirAresta(7, 9, 6);
     g.inserirAresta(8, 9, 7);
-    m.MST_Prim(g, 8); //valores aparentemente resultam em arvores diferentes, mas com mesmo somatorio
+    m.MST_Prim(g, 1); //valores aparentemente resultam em arvores diferentes, mas com mesmo somatorio
     m.mostrar(g);
-    cout << INT_MAX;*/
+    cout << INT_MAX;
 
-    Grafo_LA g(5);
-    Dijkstra d;
+
+
+
+
+    /*Grafo_MA g(5);
+    Dijkstra_MA d;
+
+    g.inserirAresta(1, 2, 10);
+    g.inserirAresta(1, 4, 5);
+    g.inserirAresta(2, 3, 1);
+    g.inserirAresta(2, 4, 2);
+    g.inserirAresta(3, 5, 4);
+    g.inserirAresta(4, 2, 3);
+    g.inserirAresta(4, 3, 9);
+    g.inserirAresta(4, 5, 2);
+    g.inserirAresta(5, 1, 7);
+    g.inserirAresta(5, 3, 6);*/
+
+    /*
     g.inserirArestaDirecionada(1, 2, 10);
     g.inserirArestaDirecionada(1, 4, 5);
     g.inserirArestaDirecionada(2, 3, 1);
@@ -353,8 +386,14 @@ int main(){
     g.inserirArestaDirecionada(4, 5, 2);
     g.inserirArestaDirecionada(5, 1, 7);
     g.inserirArestaDirecionada(5, 3, 6);
-    d.menorCaminho(g, 4);
-    d.mostrarDistancia(g, 4);
+    d.menorCaminho(g, 1);
+    d.mostrarDistancia();*/
+
+
+
+
+
+
 
     return 0;
 }

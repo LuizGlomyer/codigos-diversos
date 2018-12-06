@@ -4,12 +4,14 @@
 #include "ELEMENTO.hpp"
 #include <iostream>
 using namespace std;
-
+//DESTRUTOR COMENTADO!
 
 template<typename T>
 class ListaLigada{
 public:
-    T operator[](int);
+    template<typename Y>
+    friend ostream& operator<<(ostream&, const ListaLigada&);
+    T& operator[](int);
     ListaLigada();
     ~ListaLigada();
     void inserir(T);
@@ -17,7 +19,9 @@ public:
     void remover(int = 0);
     void esvaziar();
     void mostrarLista() const;
-    T posicao(int) const; //retorna elemento da posicao
+    bool estaVazia() const;
+    bool estaNaLista(T) const;
+    T& posicao(int); //retorna elemento da posicao
     int getTamanho() const;
     int* retornaInteiros(); //para grafos
 private:
@@ -97,15 +101,19 @@ void ListaLigada<T>::remover(int indice){
     ELEMENTO<T>* e = inicio->prox;
     delete inicio;
     inicio = e;
+    tamanho--;
 }
 
 template<typename T>
 void ListaLigada<T>::esvaziar(){
-    ELEMENTO<T>*e = inicio, * excluir;
+    ELEMENTO<T>* e = inicio, * excluir;
     while(e != nullptr){
         excluir = e;
         e = e->prox;
-        delete excluir;
+        if(excluir != nullptr){
+            delete excluir;
+            excluir = nullptr;
+        }
     }
     inicio = nullptr;
     tamanho = -1;
@@ -123,12 +131,28 @@ void ListaLigada<T>::mostrarLista() const{
 }
 
 template<typename T>
+bool ListaLigada<T>::estaVazia() const{
+    return inicio == nullptr ? true : false;
+}
+
+template<typename T>
+bool ListaLigada<T>::estaNaLista(T elemento) const{
+    ELEMENTO<T>* e = inicio;
+    while(e != nullptr){
+        if(e->dados == elemento)
+            return true;
+        e = e->prox;
+    }
+    return false;
+}
+
+template<typename T>
 int ListaLigada<T>::getTamanho() const{
     return tamanho;
 }
 
 template<typename T>
-T ListaLigada<T>::posicao(int i) const{
+T& ListaLigada<T>::posicao(int i){
     ELEMENTO<T>* e = inicio;
     for(int j = 0; j < i; j++)
         e = e->prox;
@@ -136,9 +160,18 @@ T ListaLigada<T>::posicao(int i) const{
     return e->dados;
 }
 
+template<typename Y>
+ostream& operator<<(ostream& saida, const ListaLigada<Y>& lista){
+    for(int i = 0; i <= lista.getTamanho(); i++)
+        cout << "Indice " << i << ": " << lista[i] << '\n';
+    cout << '\n';
+    return saida;
+}
+
 template<typename T>
-T ListaLigada<T>::operator[](int i){
-    return posicao(i);
+T& ListaLigada<T>::operator[](int i){
+    T& a = posicao(i);
+    return a;
 }
 
 //para grafos

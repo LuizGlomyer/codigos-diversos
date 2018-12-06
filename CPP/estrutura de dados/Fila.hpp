@@ -2,7 +2,10 @@
 #define FILA_HPP_INCLUDED
 
 #include "ELEMENTO.hpp"
+#include "ListaLigada.hpp"
 
+
+/*
 struct PRIORIDADE{
     int vertice;
     int prioridade;
@@ -64,7 +67,7 @@ public:
                 return;
             }
     }
-};
+};*/
 
 
 template<typename T>
@@ -83,6 +86,77 @@ class Fila{
     private:
         ELEMENTO<T>* primeiro,* ultimo;
 };
+
+
+template<typename T>
+class FilaPrioridades{
+public:
+    FilaPrioridades();
+    ~FilaPrioridades();
+    void inserir(T, int);
+    bool estaVazia() const;
+    bool estaNaFila(T) const;
+    void atualizarPrioridade(T, int);
+    T extrairElementoMinimo();
+private:
+    ListaLigada<T> elemento;
+    ListaLigada<int> chave;
+};
+
+template<typename T>
+FilaPrioridades<T>::FilaPrioridades(){
+
+}
+
+template<typename T>
+FilaPrioridades<T>::~FilaPrioridades(){
+
+}
+
+template<typename T>
+void FilaPrioridades<T>::inserir(T elem, int prioridade){
+    elemento.inserir(elem);
+    chave.inserir(prioridade);
+}
+
+template<typename T>
+void FilaPrioridades<T>::atualizarPrioridade(T elem, int novaPrioridade){
+    int a = this->chave.getTamanho()+1;
+    for(int i = 0; i < elemento.getTamanho()+1; i++)
+        if(elemento[i] == elem){
+            chave[i] = novaPrioridade;
+            return;
+        }
+}
+
+template<typename T>
+T FilaPrioridades<T>::extrairElementoMinimo(){
+    if(elemento.getTamanho()+1 == 0)
+        exit(123);
+    int min = 0;
+    for(int i = 0; i < elemento.getTamanho()+1; i++)
+        if(chave[min] > chave[i])
+            min = i;
+    T retorno = elemento[min];
+    elemento.remover(min);
+    chave.remover(min);
+    return retorno;
+}
+
+
+template<typename T>
+bool FilaPrioridades<T>::estaVazia() const{
+    return elemento.estaVazia();
+}
+
+template<typename T>
+bool FilaPrioridades<T>::estaNaFila(T dado) const{
+    return elemento.estaNaLista(dado);
+}
+
+
+
+
 
 
 template<typename T>
