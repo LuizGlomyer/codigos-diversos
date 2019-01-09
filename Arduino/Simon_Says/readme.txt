@@ -1,0 +1,1 @@
+memoriza só até 10 luzes, fiquei com preguiça de fazer com lista ligada
