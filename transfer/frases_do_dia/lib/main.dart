@@ -13,7 +13,7 @@ void main(){
         color: Colors.green
       ),
       child: Column( //é apenas UM filho, um unico objeto
-        mainAxisAlignment: MainAxisAlignment.center, //define onde o conteúdo fica alocado, .start e .end para o começo e fim da estrutura, respectivamente .center no centro
+        mainAxisAlignment: MainAxisAlignment.center, //define onde o conteúdo fica alocado, .start e .end para o começo e fim da estrutura, respectivamente .center no centro // .space para alinhar uniformemente
         children: <Widget>[ //vários filhos
           Text( //primeiro vem os dados, depois os params opicionais
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget tellus hendrerit.",
@@ -49,6 +49,11 @@ void main(){
               onPressed: (){},
               child: Icon(Icons.attach_file, color: Colors.white),
               color: Colors.black54
+          ),
+          Image.asset( //para usar .asset devemos primeiro configurar as imagens no arquivo pubspec.yaml
+            "images/parque.jpg",
+            width: 50,
+            height: 200,
           ),
         ],
       )
