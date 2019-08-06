@@ -30,6 +30,8 @@ git diff - mostra as diferenças do último commit com o que temos no momento
 git diff HEAD~1 - compara o que está na pasta com 1 commit anterior
 git diff CODIGO1 CODIGO2 - compara as diferenças entre dois commits
 
+git rm -rf diretorio - remove recursivamente o conteúdo do diretorio informado
+
 git clone "ULR" - baixa um repo remoto e cria um repo local
 git pull - sincroniza baixando os arquivos do servidor remoto
 git checkout "CODIGO DO COMMIT" - volta a um estado anterior, no caso, o do commit informado. Arquivos criados posteriormente somem mas não são apagados, alterações posteriores a este commit não são visíveis. Para voltar, fazer git checkout master
@@ -49,6 +51,9 @@ git fetch - baixa as atualizações do remote mas não as aplica. Útil para usa
 git tag "NOMEDATAG" - útil para dermarcar pontos significativos do projeto, uma tag guarda o estado de um repositório e não recebe mais commits. Serve para marcar as versões, por exemplo, versão 1.05 do projeto
 git push origin "NOMEDATAG" - envia a tag criada para o remote
 
+
+Arquivos .gitignore
+Ficar no root do projeto, dentro dele devemos informar diretorios os quais não serão avaliados pelo git
 
 Arquivos .md (mark-down)
 # string - realça a string, como se fosse o h1 do html
