@@ -56,6 +56,13 @@ class Venda implements NotaFiscal{ //interfaces são classes, recomenda-se class
 
 }
 
+A a() => b(); //equivale a:
+A a(){
+    return b();
+}
+
+
+
 stless/stfull : digitando isto fora da estrutura do app conseguimos criar novas classes Stateless/StatefulWidget. Stateless não podemos alterar o seu estado (constantes) e Stateful podemos alterar o seu estado (variáveis)
 
 
