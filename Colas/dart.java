@@ -9,6 +9,7 @@ Map<int, dynamic> estados //chave int, dado é qualquer tipo
 estados.forEach(
     (chave, valor)  => print("$chave - $valor") //outra forma de iterar
 );
+variáveis boolenas não podem ser concatenadas com strings, devemos usar o método variavel.toString()
 
 
 (){} //função anônima, instruções vão dentro das chaves
@@ -82,23 +83,6 @@ bool _isNumeric(String str) {
 
 
 
-
-stless/stfull : digitando isto fora da estrutura do app conseguimos criar novas classes Stateless/StatefulWidget. Stateless não podemos alterar o seu estado (constantes) e Stateful podemos alterar o seu estado (variáveis)
-pubspec.yaml : arquivo de configurações do app
-
-Os atributos das classes do flutter em geral começam com o valor null, por estarem desativados. Por exemplo o valor da mensagem auxiliar de uma caixa de entrada de texto é por padrão nulo, caso seja alguma outra coisa a mensagem aparecerá
-
-colocando launcher icons:
-dev_dependencies: 
-  flutter_test:
-    sdk: flutter
-
-  flutter_launcher_icons: "^0.7.2"
-
-flutter_icons:
-  image_path: "icon/icon.png" 
-  android: true
-  ios: true
 
 
 
