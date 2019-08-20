@@ -8,6 +8,7 @@ Classes úteis
 Scaffold - cria o esqueleto da aplicação, possui body, appbar e bottomnavigationbar
 GestureDetector - captura gestos do usuário e executa uma função de acordo com o gesto. Child para definir a área onde o gesto será detectado e métodos onTap(), etc para definir as funções de gesto
 SingleChildScrollView - necessária caso o conteúdo extrapole a tela, serve para scrollar o conteúdo
+Expanded() - suponhamos que estejamos numa row com 3 elementos que não ocupam todo o espaço horizontal. Podemos fazer com que um desses widgets se expandam ocupando o máximo espaço disponível, para isso o colocamos dentro de um expanded
 
 Navigator - necessária para a navegação entre telas. O método .push abre uma tela a ser definida, .pop fecha a tela atual e abre uma nova tela.
 Para mudar de tela precisamos informar um context e uma route. Context é definido no método build, 
