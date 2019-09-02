@@ -17,11 +17,10 @@ AssetImage("images/padrao.png") - após os assets serem definidos no pubspec.yam
 
 TextEditingController _controllerAlcool = TextEditingController(); // Definem controladores para um campo de texto, é útil para alterar ou capturar o valor
 
-
 https://flutter.dev/docs/development/ui/advanced/gestures
 
 
-
+Para mudar a splashscreen ou o ícone devemos mudar nativamente pelo xml de configuração do android, localizado em android/app/src/main/res. Devemos editar o launch_background na pasta drawable para configurar a splashscreen
 
 
 
