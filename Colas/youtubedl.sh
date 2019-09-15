@@ -1,3 +1,9 @@
+templates
+youtube-dl "LINK" -o "~/Downloads/youtube/%(uploader)s/%(title)s.%(ext)s" --> pasta com nome do uploader
+youtube-dl "LINK" -o "~/Downloads/youtube/%(playlist)s/%(title)s.%(ext)s" --> pasta com nome da playlist
+
+https://www.youtube.com/playlist?list=PLAjr8KD1EBtR5bKIY_1Ul1dSjs7D877iX
+
 --skip-download             Do not download the video
 --newline                   Output progress bar as new lines
 -q, --quiet                 Activate quiet mode
@@ -25,7 +31,7 @@
 
 -o : para a filename na saída
 modelo: -o "%(title)s.%(ext)s" nome do video e extensão
-        -o "~/Downloads/%(uploader)s/%(title)s.%(ext)s" coloca os arquivos em uma nova pasta com o nome do canal, aplicando as configs acima
+        -o "~/Downloads/youtube/%(uploader)s/%(title)s.%(ext)s" coloca os arquivos em uma nova pasta com o nome do canal, aplicando as configs acima
 
 id (string): Video identifier
 title (string): Video title
