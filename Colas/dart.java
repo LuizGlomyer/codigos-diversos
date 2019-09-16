@@ -9,6 +9,7 @@ Map<int, dynamic> estados //chave int, dado é qualquer tipo
 estados.forEach(
     (chave, valor)  => print("$chave - $valor") //outra forma de iterar
 );
+variáveis boolenas não podem ser concatenadas com strings, devemos usar o método variavel.toString()
 
 
 (){} //função anônima, instruções vão dentro das chaves
@@ -55,6 +56,30 @@ Class Papagaio extends Animal{ //herança
 class Venda implements NotaFiscal{ //interfaces são classes, recomenda-se classes abstratas
 
 }
+
+A a() => b(); //equivale a:
+A a(){
+    return b();
+}
+
+
+
+
+
+
+bool _isNumeric(String str) {
+    if(str == null) {
+      return false;
+    }
+    return double.tryParse(str) != null;
+  }
+
+
+
+
+
+
+
 
 
 
