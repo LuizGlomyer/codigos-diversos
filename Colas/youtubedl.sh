@@ -1,8 +1,8 @@
 templates
 youtube-dl "LINK" -o "~/Downloads/youtube/%(uploader)s/%(title)s.%(ext)s" --> pasta com nome do uploader
 youtube-dl "LINK" -o "~/Downloads/youtube/%(playlist)s/%(title)s.%(ext)s" --> pasta com nome da playlist
+youtube-dl "LINK" -o "~/Downloads/youtube/%(playlist)s/%(title)s - %(uploader)s.%(ext)s" --> pasta com nome da playlist e filename contendo o nome do uploader
 
-https://www.youtube.com/playlist?list=PLAjr8KD1EBtR5bKIY_1Ul1dSjs7D877iX
 
 --skip-download             Do not download the video
 --newline                   Output progress bar as new lines
