@@ -81,3 +81,6 @@ updatedb
 ATALHOS
 ctrl + alt + F(1-6) muda para um terminal de texto puro
 ctrl + alt + F(7-12) muda para a interface gráfica
+
+
+GTK_THEME=Adwaita:light meld - configura a aplicação para rodar com o tema, caso o tema em uso dê conflito com a aplicação
