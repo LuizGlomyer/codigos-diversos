@@ -1,0 +1,40 @@
+<link href="../css/bootstrap.min.css" rel="stylesheet"> /* biblioteca em si, colocar na head */
+
+<script src="../js/jquery.js"></script> /* algumas funções do bootstrap precisam desses scripts */
+<script src="../js/bootstrap.min.js"></script> /* colocar no final do body */
+
+
+div class="container" /* apresenta pontos de resolução, ou seja, a partir de uma certa resolução os objetos passam a ser escalados na página de uma maneira diferente */
+div class="container-fluid" /* apresenta um único ponto de resolução */
+grid /* possui 12 colunas, as quais podemos dividir em subpartes para compor o nosso DOM. As categorias são divididas em xs (extra small, para celulares), sm (small, tablets) md (medium, desktops), lg (large, desktops) */
+div class="col-sm-6" div class="col-sm-6"  /* são exibidas duas colunas, pois dividimos 12 para dois elementos. Se a página ficar com resolução menor ou igual a de small, será exibida apenas uma coluna */div class="col-sm-6 col-md-4" /* em resoluções médias para cima cada elemento pega 4 colunas de 12, ou seja, aparecem 3 elementos por linha. Após diminuir a resolução para small cada elemento pega 6 de 12, ou seja, temos 2 elementos por linha. Poderíamos colocar, por exemplo, col-lg-2 para aparecer 6 elementos por linha */
+
+<div class="container">
+    <div class="col-sm-6"></div> /* modelo */
+    <div class="col-sm-6"></div> /* 2 elementos por linha */
+</div>
+
+/* podem ocorrer erros de exibição quando um texto for maior que outro, por exemplo, as colunas não ficarão uniformes pois, se o conteúdo de uma vazar em outra, o bootstrap aplica uma espécie de clear both */
+<div class="clearfix visible-sm-block"></div> /* para corrigir linhas com erros. Ex: se cada linha tiver 2 elementos, os dois primeiros sendo exibidos sem erro, erro de formatação no terceiro, colocamos essa linha logo após a segunda div (ou, antes da terceira div) para corrigir a formatação */
+<div class="clearfix visible-sm-inline-block"></div> /* por vezes precisamos usar o fix inline */
+div class="row" /* é útil para organizar as várias seções numa página, cada row contendo suas próprias formatações de coluna */
+<div class="col-md-8 col-md-offset-2"></div> /* o offset é útil para centralizar um elemento que está sozinho. Por exemplo, o elemento pega 8 colunas de 12, então sobram 4 colunas. Para centralizar o elemento precisamos colocar duas colunas antes e duas depois, então colocamos offset */
+
+<p> <span class="h3"></span> </p> /* caso queiramos dar destaque a, por exemplo, um fragmento que esteja dentro de um p devemos aplicar uma das classes pré definidas do bootstrap. Para configurar esse h3, só ir no css e configurar .h3 */
+class="text-right" class="text-justify" /* aplicam alinhamento no texto */
+
+list-inline list-unstyled /* deixa uma list inline e tira todo o seu estilo (bullets) respectivamente, */
+btn-primary btn-secondary btn-sucess btn-info btn-warning btn-danger /* classes de botões, devemos aplicar uma delas acrescida da classe base 'btn'. Também podemos usar text ou bg no lugar de btn, para resultados similares. Em botões sem formatação nenhuma é bom aplicar btn-default */
+
+btn-lg btn-sm btn-xs btn-block disabled /* classes de tamanho de botões. A classe block faz o botão se estender até as estremidades da tela; disable torna o botão inclicável */ 
+
+img-rounded img-circle img-thumbnail /* classes para imagens, rounded e rounded-circle nas novas versões */
+class="img-responsive" /* imagem responsiva, img-fluid nas novas versões */
+table table-striped table-bordered table-hover /* formatações de tabela */
+
+<div class="embed-responsive embed-responsive-16by9"> /* devemos envelopar o vídeo em uma div */
+    <iframe class="embed-responsive-item" </iframe> /* ele já fica responsivo com a configuração da div, só que ele ocupa a largura inteira da página */
+</div> /* aplicando essa classe no iframe o item escala de acordo com os níveis lg, md etc */
+
+form-control /* formulário pega toda a largura lateral da página */
+
