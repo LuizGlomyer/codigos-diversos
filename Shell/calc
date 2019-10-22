@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+import sys
+from math import *
+
+argv = sys.argv[1:]
+argc = len(argv) # num de argumentos
+
+expression = ""
+for i in range(argc):
+    if argv[i] == "^":
+        expression += "**"
+        continue
+    if argv[i] == "x" or argv[i] == "X":
+        expression  += "*"
+        continue
+    
+    expression += argv[i]
+    
+print(eval(expression))
