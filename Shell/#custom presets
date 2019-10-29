@@ -1,0 +1,5 @@
+alias meld="GTK_THEME=Adwaita:light meld"
+alias sl="sl -e"
+alias c="calc"
+alias desk=desktop
+alias cls=clear

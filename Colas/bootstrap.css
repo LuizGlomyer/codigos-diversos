@@ -36,5 +36,30 @@ table table-striped table-bordered table-hover /* formatações de tabela */
     <iframe class="embed-responsive-item" </iframe> /* ele já fica responsivo com a configuração da div, só que ele ocupa a largura inteira da página */
 </div> /* aplicando essa classe no iframe o item escala de acordo com os níveis lg, md etc */
 
-form-control /* formulário pega toda a largura lateral da página */
+<div class="form-control"> /* útil para formulários, pega toda a largura lateral da página */
+<div class="form-group"> /* usamos para envelopar campos de entrada de dados (label também), para aplicar formatações */
+<div class="checkbox"> /* para checkboxes */
+<div class="radio"> /* para radio buttons */
+<div class="pull-right"> /* alinha o elemento para a direita */
+<div class="form-inline"> /* colocamos antes do primeiro form group, sem fechar a tag div. Isto faz o formulárior ser de uma linha */
+<form class="form-horizontal"> /* para fazermos alterações de colunas ocupadas pelos labels e pelos inputs */
+<label class="control-label"> /* faz o label ficar junto do input, ou seja, não se afastar quando o tamanho da tela é aumentado */
+<span class="input-group-addon"> /* colocamos antes ou depois de um input, é como se fosse uma seção da barra de preenchimento onde podemos colocar texto. A classe input-group-btn faz tornar um botão */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

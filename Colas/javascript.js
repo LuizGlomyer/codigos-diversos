@@ -1,3 +1,5 @@
+vetor.splice(0, 2) // remove 2 elementos a partir da posição 0
+
 <input name="entrada", id="entrada" class="entrada">
 document.getElementByTagName(nome) : retorna o objeto que possui o nome informado, que nem acima
 document.getElementByClassName(nomeClasse) - retona um vetor de objetos, estes objetos sendo da classe informada

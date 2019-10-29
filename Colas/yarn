@@ -1,0 +1,14 @@
+yarn init // inicia repositório e o arquivo package.json, que guarda as informações de dependências do projeto
+yarn add @babel/cli // dependência para trabalharmos com a linha de comando do babel
+yarn add @babel/preset-env // se adapta ao ambiente de desenvolvimento, se é web, mobile
+
+criamos um arquivo .babelrc para configurar o babel, que converte funcionalidades do ecmascript para JS puro
+modelo
+{
+    "presets": ["@babel/preset-env"]
+}
+
+no packages.json:
+"scripts": {
+    "dev": "babel ./main.js -o ./bundle.js" // -w para modo watch, que monitora o arquivo para atualizar automaticamente
+  }  // basicamente configura o script dev, que roda o comando babel acima. Para rodar, usamos yarn dev
