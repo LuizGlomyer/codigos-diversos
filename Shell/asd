@@ -1,2 +1,11 @@
 #!/bin/sh
-xdg-open `pwd` &
+#xdg-open `pwd` &
+for directory in $@
+do
+  xdg-open $directory &
+done
+
+if [ -z $1 ]
+then
+  xdg-open `pwd` &
+fi
