@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# Não colocar * como argumento separado na linha de comando, pois * passa todos os arquivos do diretório como parâmetro
 import sys
 from math import *
 
@@ -17,3 +18,4 @@ for i in range(argc):
     expression += argv[i]
     
 print(eval(expression))
+

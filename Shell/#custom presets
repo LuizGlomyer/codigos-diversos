@@ -1,4 +1,6 @@
 alias sl="sl -e"
 alias c="calc"
+alias desktop="xdg-open ~/Desktop"
 alias desk=desktop
 alias cls=clear
+alias suicide="shutdown now"
