@@ -1,4 +1,5 @@
 alias sl="sl -e"
+alias LS="LS -e"
 alias c="calc"
 alias desktop="xdg-open ~/Desktop"
 alias desk=desktop

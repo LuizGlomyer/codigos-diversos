@@ -4,7 +4,7 @@ vetor.splice(0, 2) // remove 2 elementos a partir da posição 0
 document.getElementByTagName(nome) : retorna o objeto que possui o nome informado, que nem acima
 document.getElementByClassName(nomeClasse) - retona um vetor de objetos, estes objetos sendo da classe informada
 
-document.querySelector(query) - faz uma pesquisa no DOM e retorna os elementos correspondentes. Ex: ('body div#app input') diz para procurar no body uma div que possui a id 'app' e depois captar o primeiro input que aparecer. Já ('input[name=nome]') retorna o input tal que o seu name é 'nome'. Notar que as [] são uma lista de atributos
+document.querySelector(query) - faz uma pesquisa no DOM e retorna os elementos correspondentes. Ex: ('body div#app input') diz para procurar no body uma div que possui a id 'app' e depois captar o primeiro input que aparecer. Já ('input[name=nome]') retorna o input tal que o seu name é 'nome'. Notar que as [] são uma lista de atributos. "button.botao" pega todos os buttons que têm a classe botao.
 documento.querySelectorAll(query) - mesma coisa, só que retorna todos os elementos ao invés de apenas o primeiro
 
 JS consegue referenciar atributos do DOM, ex:
@@ -126,6 +126,14 @@ const find = arr.find(function(item){
 console.log(find);
 
 
+//ARROW FUNCTIONS
+const arr = [1, 2, 3, 4, 5]
+const new Arr = arr.map(function(item) {return item * 2;});
+// modo reduzido, usando arrow functions
+const newArr = arr.map(item => item *2) // multiplica todos os itens do array por 2 e os retorna
+const teste = () => 3; // retorna o valor. Objetos json não podem ser retornados diretamente dessa forma, porque a {} deles se confunde com a chave do corpo de função, devemos então colocar {return {objeto}} ou simplesmente colocamos parênteses por volta das chaves, como ({objeto})
+
+
 ///DESESTRUTURAÇÃO
 const usuario = {
     nome: "luiz",
@@ -164,7 +172,7 @@ console.log(a);
 console.log(b);
 console.log(c);
 
-function soma(...params){ // numero n de params
+function soma(...params){ // numero n de params, entra como um array dentro da função
     return params.reduce((total, atual) => total + atual);
 }
 console.log(soma(1,2,3,4,5));
@@ -172,13 +180,17 @@ console.log(soma(1,2,3,4,5));
 
 const arr1 = [1,2,3];
 const arr2 = [4,5,6];
-const arr3 = [...arr1, ...arr2];
+const arr3 = [...arr1, ...arr2]; // juntar o conteúdo de arrays
 console.log(arr3);
 
-const usuario2 = {...usuario, nome: "Teste"};
+const usuario2 = {...usuario, nome: "Teste"}; // pegamos todos os campos de usuário, mas sobreescrevemos o campo nome
 console.log(usuario2);
 
 ///TEMPLATE LITERALS
 const nome = "Luiz";
 const idade = 20;
 console.log(`nome: ${nome} idade: ${idade}`);
+
+///OBJECT SHORT SYNTAX
+const nome = 'Luiz'; const idade = 20;
+const usuario = { nome, idade, empresa:'UEA' } // não precisamos colocar nome:nome, idade:idade, podemos colocar direto o nome da variável que temos declarada
