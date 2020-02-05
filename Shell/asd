@@ -1,13 +1,13 @@
-# Abre diretórios e arquivos
 #!/bin/sh
+# Abre diretórios e arquivos
 if [ "$#" -gt "0" ]
 then
    for directory in $@
    do
-       xdg-open $directory &
+       xdg-open "$directory" &
    done
 
 else
-   xdg-open `pwd` &
+   xdg-open "`pwd`" &
 fi
 
