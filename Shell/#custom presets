@@ -1,7 +1,10 @@
+alias ydl="youtube-dl"
 alias sl="sl -e"
 alias LS="LS -e"
 alias c="calc"
 alias desktop="xdg-open ~/Desktop"
 alias desk=desktop
 alias cls=clear
+alias kf="killall firefox"
+alias kc="killall chrome"
 alias suicide="shutdown now"
