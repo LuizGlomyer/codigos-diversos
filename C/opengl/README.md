@@ -1,0 +1,3 @@
+- Insert the code into hello_opengl.cpp 
+- Compile using ```make```
+- Run with ```make run```
